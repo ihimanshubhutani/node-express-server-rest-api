@@ -8,7 +8,6 @@ let users = {
     username: 'Dave Davids',
   },
 };
-
 let messages = {
   1: {
     id: '1',
