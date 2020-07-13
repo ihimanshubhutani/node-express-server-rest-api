@@ -3,12 +3,9 @@ import cors from 'cors';
 import express from 'express';
 import models from './models';
 import routes from './routes';
-
 const app = express();
-
 // * Application-Level Middleware * //
 // Third-Party Middleware
-
 app.use(cors());
 
 // Built-In Middleware
