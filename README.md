@@ -31,7 +31,6 @@ An easy way to get started with a Express server offering a REST API with Node.j
   - /users/1
 
 ### Beyond GET Routes
-
 #### CURL
 
 - Create a message with:
