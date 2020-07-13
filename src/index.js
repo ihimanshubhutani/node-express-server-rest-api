@@ -7,7 +7,6 @@ import routes from './routes';
 const app = express();
 
 // * Application-Level Middleware * //
-
 // Third-Party Middleware
 
 app.use(cors());
