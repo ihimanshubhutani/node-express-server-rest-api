@@ -8,7 +8,8 @@ on:
   push:
 
 env:
-  GKE_CLUSTER: ${ ${GITHUB_REF##*/} }
+  GKE_CLUSTER: ${GITHUB_REF##*/} 
+  GKE_WORLD: hello
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,13 +23,14 @@ jobs:
       - uses: jungwinter/split@v1
         id: split
         with:
-          msg: http-methods
+          msg: ${GITHUB_REF##*/}
           seperator: '-'
 
       - run: |-
           echo $GKE_CLUSTER
           echo ${{ steps.split.outputs._0 }}
           echo ${GITHUB_REF##*/}
+          echo $GKE_WORLD
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
