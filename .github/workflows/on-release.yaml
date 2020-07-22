@@ -22,12 +22,13 @@ jobs:
       - uses: jungwinter/split@v1
         id: split
         with:
-          msg: $GKE_CLUSTER
+          msg: ${GITHUB_REF##*/}
           seperator: '-'
 
       - run: |-
           echo $GKE_CLUSTER
           echo ${{ steps.split.outputs._0 }}
+          echo ${GITHUB_REF##*/}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
