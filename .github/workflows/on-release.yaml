@@ -27,7 +27,7 @@ jobs:
 
       - run: |-
           echo $GKE_CLUSTER
-          echo split.outputs._0
+          echo ${{ steps.split.outputs._0 }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
