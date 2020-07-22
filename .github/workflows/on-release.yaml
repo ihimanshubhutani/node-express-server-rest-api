@@ -22,8 +22,8 @@ jobs:
     steps:
       - run: |-
           GKE_CLUSTER=${GITHUB_REF##*/}
-          echo $GKE_CLUSTER
-          echo ${GKE_CLUSTER//-methods}
+          GKE_CLUSTER=${GKE_CLUSTER//-methods}
+          echo ${GKE_CLUSTER}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
