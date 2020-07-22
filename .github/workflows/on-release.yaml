@@ -23,7 +23,7 @@ jobs:
       - run: |-
           GKE_CLUSTER=${GITHUB_REF##*/}
           echo $GKE_CLUSTER
-          echo ${GKE_CLUSTER//-test}
+          echo ${GKE_CLUSTER//-methods}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
