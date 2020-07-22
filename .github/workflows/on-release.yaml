@@ -10,7 +10,7 @@ on:
 env:
   GKE_CLUSTER: ${GITHUB_REF##*/} 
   GKE_WORLD: hello
-
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -20,17 +20,10 @@ jobs:
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: jungwinter/split@v1
-        id: split
-        with:
-          msg: ${GITHUB_REF##*/}
-          seperator: '-'
-
       - run: |-
+          GKE_CLUSTER=${GITHUB_REF##*/}
           echo $GKE_CLUSTER
-          echo ${{ steps.split.outputs._0 }}
-          echo ${GITHUB_REF##*/}
-          echo $GKE_WORLD
+          echo ${GKE_CLUSTER//-test}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
