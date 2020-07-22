@@ -22,7 +22,7 @@ jobs:
       - uses: jungwinter/split@v1
         id: split
         with:
-          msg: ${GITHUB_REF##*/}
+          msg: http-methods
           seperator: '-'
 
       - run: |-
