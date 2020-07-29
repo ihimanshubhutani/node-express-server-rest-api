@@ -18,6 +18,7 @@ jobs:
     steps: 
     - run: |-
        echo ${GITHUB_REF}
+       echo ${GITHUB_REF}
 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
@@ -30,5 +31,6 @@ jobs:
     - name: Run a multi-line script
       run: |
         ls
+        echo ${GITHUB_REF}
         echo ${GITHUB_REF##*/}
         echo $GITHUB_WORKSPACE
