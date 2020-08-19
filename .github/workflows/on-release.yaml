@@ -27,6 +27,11 @@ jobs:
           fileName: 'myTemporaryFile.json'
           encodedString: ${{ secrets.YOYO }}
 
+      - name: Some other step
+        with:
+            filelocation: ${{ steps.write_file.outputs.filePath }}
+        
+
       - name: second-check
         run: |-
           ls
