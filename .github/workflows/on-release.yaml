@@ -28,6 +28,8 @@ jobs:
           encodedString: ${{ secrets.YOYO }}
 
       - name: Some other step
+        env:
+          loc: ${filelocation}
         with:
             filelocation: ${{ steps.write_file.outputs.filePath }}
         
@@ -35,6 +37,7 @@ jobs:
       - name: second-check
         run: |-
           ls
+          echo ${loc}
           GKE_CLUSTER=${GKE_CLUSTER//-kim}
           echo ${GKE_CLUSTER}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
