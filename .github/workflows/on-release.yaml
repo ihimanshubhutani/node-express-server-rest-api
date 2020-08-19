@@ -20,6 +20,10 @@ jobs:
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: check
+        run: cat ${{ secrets.YOYO }}
+        
+        
       - name: Run Workflow
         id: write_file
         uses: timheuer/base64-to-file@v1.0.3
@@ -27,12 +31,8 @@ jobs:
           fileName: 'myTemporaryFile.json'
           encodedString: ${{ secrets.YOYO }}
 
-      - name: Some other step
-        uses: actions/someaction@master
-        with:
-            filelocation: ${{ steps.write_file.outputs.filePath }}
-
-      - run: |-
+      - name: second-check
+        run: |-
           ls
           GKE_CLUSTER=${GKE_CLUSTER//-kim}
           echo ${GKE_CLUSTER}
