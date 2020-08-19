@@ -8,7 +8,7 @@ on:
   push:
 
 env:
-  GKE_CLUSTER: ${GITHUB_REF##*/} 
+  GKE_CLUSTER: hola-kim
   GKE_WORLD: hello
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -20,9 +20,21 @@ jobs:
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Run Workflow
+        id: write_file
+        uses: timheuer/base64-to-file@v1.0.3
+        with:
+          fileName: 'myTemporaryFile.json'
+          encodedString: ${{ secrets.YOYO }}
+
+      - name: Some other step
+        uses: actions/someaction@master
+        with:
+            filelocation: ${{ steps.write_file.outputs.filePath }}
+
       - run: |-
-          GKE_CLUSTER=${GITHUB_REF##*/}
-          GKE_CLUSTER=${GKE_CLUSTER//-methods}
+          ls
+          GKE_CLUSTER=${GKE_CLUSTER//-kim}
           echo ${GKE_CLUSTER}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
